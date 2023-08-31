@@ -83,9 +83,9 @@ const flowTypeMessage = addKeyword(['Types Messages', 'types messages'])
 
 
 const mainFlow = addKeyword(EVENTS.WELCOME)
-    .addAnswer('🙌 Hello, welcome to this *Chatbot*')
+    .addAnswer('🙌 Salve, Seja Bem Vindo ao BOT <3')
     .addAnswer([
-        '📄 Here we have the main flow',
+        '📄 *MENU PRINCIPAL*',
     ],
         { capture: true, 'buttons': [{ "body": "Wellcome" }, { "body": "Types Messages" }, { "body": "Git" }, { "body": "Help" }] },
         async (ctx, { fallBack, flowDynamic }) => {
