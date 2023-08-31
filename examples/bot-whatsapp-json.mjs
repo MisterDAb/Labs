@@ -45,8 +45,8 @@ const flowWellcome = addKeyword(['wellcome'])
 
     );
 
-const flowGit = addKeyword(['git'])
-    .addAnswer(['Git https://github.com/andresayac/bot-wa-baileys'])
+const flowGit = addKeyword(['adicionar_saldo'])
+    .addAnswer(['Resposta Correta Acionada!'])
 
 
 const flowHelp = addKeyword(['help'])
@@ -87,9 +87,10 @@ const mainFlow = addKeyword(EVENTS.WELCOME)
     .addAnswer([
         '📄 *MENU PRINCIPAL*',
     ],
-        { capture: true, 'buttons': [{ "body": "Wellcome" }, { "body": "Types Messages" }, { "body": "Git" }, { "body": "Help" }] },
+        { capture: true, 'buttons': [{ "body": "ADICIONAR_SALDO" }, { "body": "Types Messages" }, { "body": "Git" }, { "body": "Help" }] },
         async (ctx, { fallBack, flowDynamic }) => {
-            if (!['wellcome', 'git', 'help', 'types messages'].includes(ctx.body.toLowerCase().trim())) {
+            console.log(ctx.body)
+            if (!['ADICIONAR_SALDO', 'git', 'help', 'types messages'].includes(ctx.body.toLowerCase().trim())) {
                 await flowDynamic(['Option not found, try again'])
                 await fallBack()
                 return

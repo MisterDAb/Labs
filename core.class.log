@@ -2,35 +2,10 @@
   key: {
     remoteJid: '5521976401218@s.whatsapp.net',
     fromMe: false,
-    id: '3EB0C2D9DF9305883C31CB',
+    id: '3EB00CAD5362188090E677',
     participant: undefined
   },
-  messageTimestamp: 1693477059,
-  pushName: 'ClassicX STORE NOVO NOVO',
-  broadcast: false,
-  message: Message {
-    extendedTextMessage: ExtendedTextMessage {
-      text: 'welcome',
-      contextInfo: [ContextInfo],
-      inviteLinkGroupTypeV2: 0
-    },
-    messageContextInfo: MessageContextInfo {
-      deviceListMetadata: [DeviceListMetadata],
-      deviceListMetadataVersion: 2
-    }
-  },
-  body: 'welcome',
-  from: '5521976401218',
-  type: 'text'
-}
-[handleMsg]:  {
-  key: {
-    remoteJid: '5521976401218@s.whatsapp.net',
-    fromMe: false,
-    id: '3EB024EEA01CB3DB93BCF1',
-    participant: undefined
-  },
-  messageTimestamp: 1693477064,
+  messageTimestamp: 1693478807,
   pushName: 'ClassicX STORE NOVO NOVO',
   broadcast: false,
   message: Message {
@@ -49,8 +24,8 @@
   type: 'text'
 }
 [sendQueue_A]:  {
-  ref: 'ans_8dc785ed-b1e3-48e2-b243-77f99e6bda50',
-  keyword: 'key_7f2ea069-279c-493f-9ce4-e34ec2355291',
+  ref: 'ans_48d9743e-7575-4b36-ae2c-902e674fa7a4',
+  keyword: 'key_a2f6cec5-2d9f-4fed-833a-4b5c586e0547',
   answer: '🙌 Salve, Seja Bem Vindo ao BOT <3',
   options: {
     media: null,
@@ -62,11 +37,11 @@
     keyword: {},
     callback: false
   },
-  refSerialize: 'de79999ef50f7a1705c282b747321a64'
+  refSerialize: '7e4335683ca93d59bc8ba42540502ebe'
 }
 [sendProviderAndSave]:  {
-  ref: 'ans_8dc785ed-b1e3-48e2-b243-77f99e6bda50',
-  keyword: 'key_7f2ea069-279c-493f-9ce4-e34ec2355291',
+  ref: 'ans_48d9743e-7575-4b36-ae2c-902e674fa7a4',
+  keyword: 'key_a2f6cec5-2d9f-4fed-833a-4b5c586e0547',
   answer: '🙌 Salve, Seja Bem Vindo ao BOT <3',
   options: {
     media: null,
@@ -78,11 +53,11 @@
     keyword: {},
     callback: false
   },
-  refSerialize: 'de79999ef50f7a1705c282b747321a64'
+  refSerialize: '7e4335683ca93d59bc8ba42540502ebe'
 }
 [providerClass.sendMessage]:  {
-  ref: 'ans_8dc785ed-b1e3-48e2-b243-77f99e6bda50',
-  keyword: 'key_7f2ea069-279c-493f-9ce4-e34ec2355291',
+  ref: 'ans_48d9743e-7575-4b36-ae2c-902e674fa7a4',
+  keyword: 'key_a2f6cec5-2d9f-4fed-833a-4b5c586e0547',
   answer: '🙌 Salve, Seja Bem Vindo ao BOT <3',
   options: {
     media: null,
@@ -94,11 +69,11 @@
     keyword: {},
     callback: false
   },
-  refSerialize: 'de79999ef50f7a1705c282b747321a64'
+  refSerialize: '7e4335683ca93d59bc8ba42540502ebe'
 }
 [databaseClass.save]:  {
-  ref: 'ans_8dc785ed-b1e3-48e2-b243-77f99e6bda50',
-  keyword: 'key_7f2ea069-279c-493f-9ce4-e34ec2355291',
+  ref: 'ans_48d9743e-7575-4b36-ae2c-902e674fa7a4',
+  keyword: 'key_a2f6cec5-2d9f-4fed-833a-4b5c586e0547',
   answer: '🙌 Salve, Seja Bem Vindo ao BOT <3',
   options: {
     media: null,
@@ -110,11 +85,11 @@
     keyword: {},
     callback: false
   },
-  refSerialize: 'de79999ef50f7a1705c282b747321a64'
+  refSerialize: '7e4335683ca93d59bc8ba42540502ebe'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_8dc785ed-b1e3-48e2-b243-77f99e6bda50',
-  keyword: 'key_7f2ea069-279c-493f-9ce4-e34ec2355291',
+  ref: 'ans_48d9743e-7575-4b36-ae2c-902e674fa7a4',
+  keyword: 'key_a2f6cec5-2d9f-4fed-833a-4b5c586e0547',
   answer: '🙌 Salve, Seja Bem Vindo ao BOT <3',
   options: {
     media: null,
@@ -126,11 +101,11 @@
     keyword: {},
     callback: false
   },
-  refSerialize: 'de79999ef50f7a1705c282b747321a64'
+  refSerialize: '7e4335683ca93d59bc8ba42540502ebe'
 }
 [sendQueue_A]:  {
-  ref: 'ans_2161d7da-1f77-4b80-a1d9-ccb1f20d2990',
-  keyword: 'ans_8dc785ed-b1e3-48e2-b243-77f99e6bda50',
+  ref: 'ans_5b2deb6b-0d09-403f-bf06-58b40b195e32',
+  keyword: 'ans_48d9743e-7575-4b36-ae2c-902e674fa7a4',
   answer: '📄 *MENU PRINCIPAL*',
   options: {
     media: null,
@@ -148,11 +123,11 @@
     keyword: {},
     callback: true
   },
-  refSerialize: '00afd6c8988f6fcea1f96773ccd4d41d'
+  refSerialize: 'f4b6a3cc3d27d1d5fb4b7c5825fd87a4'
 }
 [sendProviderAndSave]:  {
-  ref: 'ans_2161d7da-1f77-4b80-a1d9-ccb1f20d2990',
-  keyword: 'ans_8dc785ed-b1e3-48e2-b243-77f99e6bda50',
+  ref: 'ans_5b2deb6b-0d09-403f-bf06-58b40b195e32',
+  keyword: 'ans_48d9743e-7575-4b36-ae2c-902e674fa7a4',
   answer: '📄 *MENU PRINCIPAL*',
   options: {
     media: null,
@@ -170,11 +145,11 @@
     keyword: {},
     callback: true
   },
-  refSerialize: '00afd6c8988f6fcea1f96773ccd4d41d'
+  refSerialize: 'f4b6a3cc3d27d1d5fb4b7c5825fd87a4'
 }
 [providerClass.sendMessage]:  {
-  ref: 'ans_2161d7da-1f77-4b80-a1d9-ccb1f20d2990',
-  keyword: 'ans_8dc785ed-b1e3-48e2-b243-77f99e6bda50',
+  ref: 'ans_5b2deb6b-0d09-403f-bf06-58b40b195e32',
+  keyword: 'ans_48d9743e-7575-4b36-ae2c-902e674fa7a4',
   answer: '📄 *MENU PRINCIPAL*',
   options: {
     media: null,
@@ -192,11 +167,11 @@
     keyword: {},
     callback: true
   },
-  refSerialize: '00afd6c8988f6fcea1f96773ccd4d41d'
+  refSerialize: 'f4b6a3cc3d27d1d5fb4b7c5825fd87a4'
 }
 [databaseClass.save]:  {
-  ref: 'ans_2161d7da-1f77-4b80-a1d9-ccb1f20d2990',
-  keyword: 'ans_8dc785ed-b1e3-48e2-b243-77f99e6bda50',
+  ref: 'ans_5b2deb6b-0d09-403f-bf06-58b40b195e32',
+  keyword: 'ans_48d9743e-7575-4b36-ae2c-902e674fa7a4',
   answer: '📄 *MENU PRINCIPAL*',
   options: {
     media: null,
@@ -214,11 +189,11 @@
     keyword: {},
     callback: true
   },
-  refSerialize: '00afd6c8988f6fcea1f96773ccd4d41d'
+  refSerialize: 'f4b6a3cc3d27d1d5fb4b7c5825fd87a4'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_2161d7da-1f77-4b80-a1d9-ccb1f20d2990',
-  keyword: 'ans_8dc785ed-b1e3-48e2-b243-77f99e6bda50',
+  ref: 'ans_5b2deb6b-0d09-403f-bf06-58b40b195e32',
+  keyword: 'ans_48d9743e-7575-4b36-ae2c-902e674fa7a4',
   answer: '📄 *MENU PRINCIPAL*',
   options: {
     media: null,
@@ -236,5 +211,200 @@
     keyword: {},
     callback: true
   },
-  refSerialize: '00afd6c8988f6fcea1f96773ccd4d41d'
+  refSerialize: 'f4b6a3cc3d27d1d5fb4b7c5825fd87a4'
+}
+[handleMsg]:  {
+  key: MessageKey {
+    remoteJid: '5521976401218@s.whatsapp.net',
+    fromMe: true,
+    id: 'BAE5CB06F58B6405',
+    participant: undefined
+  },
+  update: { pollUpdates: [ [Object] ] },
+  body: 'ADICIONAR_SALDO',
+  from: '5521976401218',
+  voters: Message {
+    messageContextInfo: MessageContextInfo {
+      messageSecret: <Buffer 56 75 2c 24 a5 de 45 8f 02 e5 b7 9b 2d 13 b5 b1 a9 d2 98 93 9a 25 a6 10 57 ae 16 0d a0 61 b9 b5>
+    },
+    pollCreationMessage: PollCreationMessage {
+      options: [Array],
+      name: '📄 *MENU PRINCIPAL*',
+      selectableOptionsCount: 1
+    }
+  },
+  type: 'poll'
+}
+[sendProviderAndSave]:  {
+  ref: '34f2f149-0728-48f8-a7ac-1b0d0963c8b2',
+  keyword: undefined,
+  answer: 'Option not found, try again',
+  options: { media: null, buttons: [], capture: false, delay: 0 },
+  from: '5521976401218',
+  refSerialize: '15d4a3734dc26e0361a842937985c794'
+}
+[providerClass.sendMessage]:  {
+  ref: '34f2f149-0728-48f8-a7ac-1b0d0963c8b2',
+  keyword: undefined,
+  answer: 'Option not found, try again',
+  options: { media: null, buttons: [], capture: false, delay: 0 },
+  from: '5521976401218',
+  refSerialize: '15d4a3734dc26e0361a842937985c794'
+}
+[databaseClass.save]:  {
+  ref: '34f2f149-0728-48f8-a7ac-1b0d0963c8b2',
+  keyword: undefined,
+  answer: 'Option not found, try again',
+  options: { media: null, buttons: [], capture: false, delay: 0 },
+  from: '5521976401218',
+  refSerialize: '15d4a3734dc26e0361a842937985c794'
+}
+[sendProviderAndSave]:  {
+  ref: 'ans_5b2deb6b-0d09-403f-bf06-58b40b195e32',
+  keyword: 'ans_48d9743e-7575-4b36-ae2c-902e674fa7a4',
+  answer: '📄 *MENU PRINCIPAL*',
+  options: {
+    media: null,
+    buttons: [ [Object], [Object], [Object], [Object] ],
+    capture: true,
+    child: null,
+    delay: 0,
+    nested: [
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object]
+    ],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: 'f4b6a3cc3d27d1d5fb4b7c5825fd87a4',
+  from: '5521976401218'
+}
+[providerClass.sendMessage]:  {
+  ref: 'ans_5b2deb6b-0d09-403f-bf06-58b40b195e32',
+  keyword: 'ans_48d9743e-7575-4b36-ae2c-902e674fa7a4',
+  answer: '📄 *MENU PRINCIPAL*',
+  options: {
+    media: null,
+    buttons: [ [Object], [Object], [Object], [Object] ],
+    capture: true,
+    child: null,
+    delay: 0,
+    nested: [
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object]
+    ],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: 'f4b6a3cc3d27d1d5fb4b7c5825fd87a4',
+  from: '5521976401218'
+}
+[databaseClass.save]:  {
+  ref: 'ans_5b2deb6b-0d09-403f-bf06-58b40b195e32',
+  keyword: 'ans_48d9743e-7575-4b36-ae2c-902e674fa7a4',
+  answer: '📄 *MENU PRINCIPAL*',
+  options: {
+    media: null,
+    buttons: [ [Object], [Object], [Object], [Object] ],
+    capture: true,
+    child: null,
+    delay: 0,
+    nested: [
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object]
+    ],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: 'f4b6a3cc3d27d1d5fb4b7c5825fd87a4',
+  from: '5521976401218'
+}
+[sendQueue_A]:  {
+  ref: 'ans_f03aed52-f2d2-4975-b5a5-2cb270af8109',
+  keyword: 'key_ffe0e466-fbcf-4696-a573-a47918babf80',
+  answer: 'Resposta Correta Acionada!',
+  options: {
+    media: null,
+    buttons: [],
+    capture: false,
+    child: null,
+    delay: 0,
+    nested: [],
+    keyword: {},
+    callback: false
+  },
+  refSerialize: '678517d47d797c030eb0a489533d7340'
+}
+[sendProviderAndSave]:  {
+  ref: 'ans_f03aed52-f2d2-4975-b5a5-2cb270af8109',
+  keyword: 'key_ffe0e466-fbcf-4696-a573-a47918babf80',
+  answer: 'Resposta Correta Acionada!',
+  options: {
+    media: null,
+    buttons: [],
+    capture: false,
+    child: null,
+    delay: 0,
+    nested: [],
+    keyword: {},
+    callback: false
+  },
+  refSerialize: '678517d47d797c030eb0a489533d7340'
+}
+[providerClass.sendMessage]:  {
+  ref: 'ans_f03aed52-f2d2-4975-b5a5-2cb270af8109',
+  keyword: 'key_ffe0e466-fbcf-4696-a573-a47918babf80',
+  answer: 'Resposta Correta Acionada!',
+  options: {
+    media: null,
+    buttons: [],
+    capture: false,
+    child: null,
+    delay: 0,
+    nested: [],
+    keyword: {},
+    callback: false
+  },
+  refSerialize: '678517d47d797c030eb0a489533d7340'
+}
+[databaseClass.save]:  {
+  ref: 'ans_f03aed52-f2d2-4975-b5a5-2cb270af8109',
+  keyword: 'key_ffe0e466-fbcf-4696-a573-a47918babf80',
+  answer: 'Resposta Correta Acionada!',
+  options: {
+    media: null,
+    buttons: [],
+    capture: false,
+    child: null,
+    delay: 0,
+    nested: [],
+    keyword: {},
+    callback: false
+  },
+  refSerialize: '678517d47d797c030eb0a489533d7340'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_f03aed52-f2d2-4975-b5a5-2cb270af8109',
+  keyword: 'key_ffe0e466-fbcf-4696-a573-a47918babf80',
+  answer: 'Resposta Correta Acionada!',
+  options: {
+    media: null,
+    buttons: [],
+    capture: false,
+    child: null,
+    delay: 0,
+    nested: [],
+    keyword: {},
+    callback: false
+  },
+  refSerialize: '678517d47d797c030eb0a489533d7340'
 }

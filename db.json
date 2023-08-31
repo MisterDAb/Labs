@@ -1,23 +1,15 @@
 [
   {
-    "ref": "c0f6e763-4e22-451c-b882-8ccf332a3b3e",
-    "keyword": "0e69f0d9171fa7c81ea38f1163163c7f",
-    "answer": "welcome",
-    "options": {},
-    "from": "5521976401218",
-    "refSerialize": "2a931880cd7f5675a6f0d5f144011721"
-  },
-  {
-    "ref": "472bcabd-3945-4043-b465-0a9312f50278",
-    "keyword": "2a931880cd7f5675a6f0d5f144011721",
+    "ref": "6ee44a3d-78dc-4082-8307-4dbfc308930c",
+    "keyword": "c524883683b86333c8940a28357b1b5c",
     "answer": "wellcome",
     "options": {},
     "from": "5521976401218",
     "refSerialize": "f33ddb1d3b463d7dc7409aaeb34acbd6"
   },
   {
-    "ref": "ans_8dc785ed-b1e3-48e2-b243-77f99e6bda50",
-    "keyword": "key_7f2ea069-279c-493f-9ce4-e34ec2355291",
+    "ref": "ans_48d9743e-7575-4b36-ae2c-902e674fa7a4",
+    "keyword": "key_a2f6cec5-2d9f-4fed-833a-4b5c586e0547",
     "answer": "🙌 Salve, Seja Bem Vindo ao BOT <3",
     "options": {
       "media": null,
@@ -29,18 +21,18 @@
       "keyword": {},
       "callback": false
     },
-    "refSerialize": "de79999ef50f7a1705c282b747321a64",
+    "refSerialize": "7e4335683ca93d59bc8ba42540502ebe",
     "from": "5521976401218"
   },
   {
-    "ref": "ans_2161d7da-1f77-4b80-a1d9-ccb1f20d2990",
-    "keyword": "ans_8dc785ed-b1e3-48e2-b243-77f99e6bda50",
+    "ref": "ans_5b2deb6b-0d09-403f-bf06-58b40b195e32",
+    "keyword": "ans_48d9743e-7575-4b36-ae2c-902e674fa7a4",
     "answer": "📄 *MENU PRINCIPAL*",
     "options": {
       "media": null,
       "buttons": [
         {
-          "body": "Wellcome"
+          "body": "ADICIONAR_SALDO"
         },
         {
           "body": "Types Messages"
@@ -57,7 +49,7 @@
       "delay": 0,
       "nested": [
         {
-          "ref": "key_08125df7-fa3f-4546-b723-791ef8d8cd36",
+          "ref": "key_767b0bd7-5b89-4e07-bd4a-2b17ac083fe3",
           "keyword": [
             "wellcome"
           ],
@@ -68,8 +60,8 @@
           "refSerialize": "97980cc41248f827a10102b54d6c05cd"
         },
         {
-          "ref": "ans_3d06a0ff-d670-4eab-814b-117d5c628724",
-          "keyword": "key_08125df7-fa3f-4546-b723-791ef8d8cd36",
+          "ref": "ans_d5e916e1-76b5-4ce6-a07e-95da83027932",
+          "keyword": "key_767b0bd7-5b89-4e07-bd4a-2b17ac083fe3",
           "answer": "Hi there!",
           "options": {
             "media": null,
@@ -81,11 +73,11 @@
             "keyword": {},
             "callback": false
           },
-          "refSerialize": "a8827cc4f77d0e7bc280313588bdcc8e"
+          "refSerialize": "1088fc764ac305bffea5b1423c5ad489"
         },
         {
-          "ref": "ans_572441fe-6c01-4e17-bea6-807b6304a8ea",
-          "keyword": "ans_3d06a0ff-d670-4eab-814b-117d5c628724",
+          "ref": "ans_6a5af80f-cfb1-4bb1-a62e-224e9474c242",
+          "keyword": "ans_d5e916e1-76b5-4ce6-a07e-95da83027932",
           "answer": "How are you?\n 1 - Good\n 2 - Bad",
           "options": {
             "media": null,
@@ -97,23 +89,23 @@
             "keyword": {},
             "callback": true
           },
-          "refSerialize": "78f95aeb67c53407ce8212e4719a22ce"
+          "refSerialize": "fdd70cb605b07a980e674a3d589b6e61"
         },
         {
-          "ref": "key_cc37361f-b6d2-4f4f-a85e-94f3a4acc49e",
+          "ref": "key_ffe0e466-fbcf-4696-a573-a47918babf80",
           "keyword": [
-            "git"
+            "adicionar_saldo"
           ],
           "options": {
             "sensitive": false,
             "regex": false
           },
-          "refSerialize": "1d788eeb077ac33dbabc0a84f892086a"
+          "refSerialize": "1f50038744040d513dc647b379920da9"
         },
         {
-          "ref": "ans_175edd09-7878-4b5c-9f08-7f09f8166ced",
-          "keyword": "key_cc37361f-b6d2-4f4f-a85e-94f3a4acc49e",
-          "answer": "Git https://github.com/andresayac/bot-wa-baileys",
+          "ref": "ans_f03aed52-f2d2-4975-b5a5-2cb270af8109",
+          "keyword": "key_ffe0e466-fbcf-4696-a573-a47918babf80",
+          "answer": "Resposta Correta Acionada!",
           "options": {
             "media": null,
             "buttons": [],
@@ -124,10 +116,10 @@
             "keyword": {},
             "callback": false
           },
-          "refSerialize": "526324f251edf8bb2c88369e449e4123"
+          "refSerialize": "678517d47d797c030eb0a489533d7340"
         },
         {
-          "ref": "key_dab9246b-a83a-4e49-a211-69785e5256cb",
+          "ref": "key_1963d4da-1a14-4977-a3c6-bdf4f7797968",
           "keyword": [
             "help"
           ],
@@ -138,8 +130,8 @@
           "refSerialize": "e92c02fc11ebd4ec73bf94ee90bd0741"
         },
         {
-          "ref": "ans_8b1f289e-f178-42e1-bd4a-7d675a6d2999",
-          "keyword": "key_dab9246b-a83a-4e49-a211-69785e5256cb",
+          "ref": "ans_d40df965-3131-495a-b75c-e728e60ccbc3",
+          "keyword": "key_1963d4da-1a14-4977-a3c6-bdf4f7797968",
           "answer": "Help contact us at discord user andresaya",
           "options": {
             "media": null,
@@ -151,10 +143,10 @@
             "keyword": {},
             "callback": false
           },
-          "refSerialize": "e1011be9570ddfd752f989af377df8d6"
+          "refSerialize": "22ded5fcb1715edd1d76e787893812dd"
         },
         {
-          "ref": "key_fb48b3f5-dc9a-4b72-96ee-d07b6cdb3b21",
+          "ref": "key_191c73a2-7ece-4dbf-9d94-8d71d26ff95e",
           "keyword": [
             "Types Messages",
             "types messages"
@@ -166,8 +158,8 @@
           "refSerialize": "cbb3cedb1338e753df3d67171bb73a9f"
         },
         {
-          "ref": "ans_38460ada-c2d3-40ad-b683-fd4f0b857a8b",
-          "keyword": "key_fb48b3f5-dc9a-4b72-96ee-d07b6cdb3b21",
+          "ref": "ans_18d9e76b-1ab8-437b-b96e-f2785554505b",
+          "keyword": "key_191c73a2-7ece-4dbf-9d94-8d71d26ff95e",
           "answer": "Select the type of message you want to send",
           "options": {
             "media": null,
@@ -195,13 +187,222 @@
             "keyword": {},
             "callback": true
           },
-          "refSerialize": "7a9a310547ad59bff8541faaa033398f"
+          "refSerialize": "10ccb98200221c4314405a9edc7cd0fc"
         }
       ],
       "keyword": {},
       "callback": true
     },
-    "refSerialize": "00afd6c8988f6fcea1f96773ccd4d41d",
+    "refSerialize": "f4b6a3cc3d27d1d5fb4b7c5825fd87a4",
+    "from": "5521976401218"
+  },
+  {
+    "ref": "cd36b41d-08d1-403e-b3e1-ac4b07c5d7c9",
+    "keyword": "f4b6a3cc3d27d1d5fb4b7c5825fd87a4",
+    "answer": "ADICIONAR_SALDO",
+    "options": {},
+    "from": "5521976401218",
+    "refSerialize": "bdffe063b8ffa05550b04b2d58eef690"
+  },
+  {
+    "ref": "34f2f149-0728-48f8-a7ac-1b0d0963c8b2",
+    "answer": "Option not found, try again",
+    "options": {
+      "media": null,
+      "buttons": [],
+      "capture": false,
+      "delay": 0
+    },
+    "from": "5521976401218",
+    "refSerialize": "15d4a3734dc26e0361a842937985c794"
+  },
+  {
+    "ref": "ans_5b2deb6b-0d09-403f-bf06-58b40b195e32",
+    "keyword": "ans_48d9743e-7575-4b36-ae2c-902e674fa7a4",
+    "answer": "📄 *MENU PRINCIPAL*",
+    "options": {
+      "media": null,
+      "buttons": [
+        {
+          "body": "ADICIONAR_SALDO"
+        },
+        {
+          "body": "Types Messages"
+        },
+        {
+          "body": "Git"
+        },
+        {
+          "body": "Help"
+        }
+      ],
+      "capture": true,
+      "child": null,
+      "delay": 0,
+      "nested": [
+        {
+          "ref": "key_767b0bd7-5b89-4e07-bd4a-2b17ac083fe3",
+          "keyword": [
+            "wellcome"
+          ],
+          "options": {
+            "sensitive": false,
+            "regex": false
+          },
+          "refSerialize": "97980cc41248f827a10102b54d6c05cd"
+        },
+        {
+          "ref": "ans_d5e916e1-76b5-4ce6-a07e-95da83027932",
+          "keyword": "key_767b0bd7-5b89-4e07-bd4a-2b17ac083fe3",
+          "answer": "Hi there!",
+          "options": {
+            "media": null,
+            "buttons": [],
+            "capture": false,
+            "child": null,
+            "delay": 0,
+            "nested": [],
+            "keyword": {},
+            "callback": false
+          },
+          "refSerialize": "1088fc764ac305bffea5b1423c5ad489"
+        },
+        {
+          "ref": "ans_6a5af80f-cfb1-4bb1-a62e-224e9474c242",
+          "keyword": "ans_d5e916e1-76b5-4ce6-a07e-95da83027932",
+          "answer": "How are you?\n 1 - Good\n 2 - Bad",
+          "options": {
+            "media": null,
+            "buttons": [],
+            "capture": true,
+            "child": null,
+            "delay": 0,
+            "nested": [],
+            "keyword": {},
+            "callback": true
+          },
+          "refSerialize": "fdd70cb605b07a980e674a3d589b6e61"
+        },
+        {
+          "ref": "key_ffe0e466-fbcf-4696-a573-a47918babf80",
+          "keyword": [
+            "adicionar_saldo"
+          ],
+          "options": {
+            "sensitive": false,
+            "regex": false
+          },
+          "refSerialize": "1f50038744040d513dc647b379920da9"
+        },
+        {
+          "ref": "ans_f03aed52-f2d2-4975-b5a5-2cb270af8109",
+          "keyword": "key_ffe0e466-fbcf-4696-a573-a47918babf80",
+          "answer": "Resposta Correta Acionada!",
+          "options": {
+            "media": null,
+            "buttons": [],
+            "capture": false,
+            "child": null,
+            "delay": 0,
+            "nested": [],
+            "keyword": {},
+            "callback": false
+          },
+          "refSerialize": "678517d47d797c030eb0a489533d7340"
+        },
+        {
+          "ref": "key_1963d4da-1a14-4977-a3c6-bdf4f7797968",
+          "keyword": [
+            "help"
+          ],
+          "options": {
+            "sensitive": false,
+            "regex": false
+          },
+          "refSerialize": "e92c02fc11ebd4ec73bf94ee90bd0741"
+        },
+        {
+          "ref": "ans_d40df965-3131-495a-b75c-e728e60ccbc3",
+          "keyword": "key_1963d4da-1a14-4977-a3c6-bdf4f7797968",
+          "answer": "Help contact us at discord user andresaya",
+          "options": {
+            "media": null,
+            "buttons": [],
+            "capture": false,
+            "child": null,
+            "delay": 0,
+            "nested": [],
+            "keyword": {},
+            "callback": false
+          },
+          "refSerialize": "22ded5fcb1715edd1d76e787893812dd"
+        },
+        {
+          "ref": "key_191c73a2-7ece-4dbf-9d94-8d71d26ff95e",
+          "keyword": [
+            "Types Messages",
+            "types messages"
+          ],
+          "options": {
+            "sensitive": false,
+            "regex": false
+          },
+          "refSerialize": "cbb3cedb1338e753df3d67171bb73a9f"
+        },
+        {
+          "ref": "ans_18d9e76b-1ab8-437b-b96e-f2785554505b",
+          "keyword": "key_191c73a2-7ece-4dbf-9d94-8d71d26ff95e",
+          "answer": "Select the type of message you want to send",
+          "options": {
+            "media": null,
+            "buttons": [
+              {
+                "body": "Text"
+              },
+              {
+                "body": "Media"
+              },
+              {
+                "body": "Sticker"
+              },
+              {
+                "body": "File"
+              },
+              {
+                "body": "Go to Flow Main"
+              }
+            ],
+            "capture": true,
+            "child": null,
+            "delay": 0,
+            "nested": [],
+            "keyword": {},
+            "callback": true
+          },
+          "refSerialize": "10ccb98200221c4314405a9edc7cd0fc"
+        }
+      ],
+      "keyword": {},
+      "callback": true
+    },
+    "refSerialize": "f4b6a3cc3d27d1d5fb4b7c5825fd87a4",
+    "from": "5521976401218"
+  },
+  {
+    "ref": "ans_f03aed52-f2d2-4975-b5a5-2cb270af8109",
+    "keyword": "key_ffe0e466-fbcf-4696-a573-a47918babf80",
+    "answer": "Resposta Correta Acionada!",
+    "options": {
+      "media": null,
+      "buttons": [],
+      "capture": false,
+      "child": null,
+      "delay": 0,
+      "nested": [],
+      "keyword": {},
+      "callback": false
+    },
+    "refSerialize": "678517d47d797c030eb0a489533d7340",
     "from": "5521976401218"
   }
 ]
