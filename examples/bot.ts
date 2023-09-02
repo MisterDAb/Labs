@@ -12,7 +12,7 @@ botBaileys.on('message', async (message) => {
     if (message.body === 'menu') {
         console.log(`Enviando Menu!\nUsuário: ${message.from}\n`);
     
-        const saldoAtual = 0.00; // Defina o saldo atual conforme necessário
+        const saldoAtual = 100.00; // SALDO-TESTE
     
         const menuText = `Wanted Store\n\n◆ ━━━━❪✪❫━━━━ ◆\n❖ Seu número: ${(message.from.split('@'))[0]}\n❖ Saldo Atual: R$: ${saldoAtual}\n◆ ━━━━❪✪❫━━━━ ◆\n\nATENDIMENTO ON 24 HRS⏰\nGARANTIMOS LIVE E MELHOR PREÇO✅\nTODAS AS INFO SÃO TESTADAS✅\n\n🤖WANTED STORE A MELHOR STORE DA ATUALIDADE🤖\nQUALIDADE,PREÇO JUSTO E AGILIDADE`;
     
