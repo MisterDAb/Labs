@@ -10,7 +10,21 @@ let awaitingResponse = false;
 
 botBaileys.on('message', async (message) => {
     if (message.body === 'menu') {
-        console.log(message);
+        console.log(message.body);
+    
+        const saldoAtual = 0.00; // Defina o saldo atual conforme necessário
+    
+        const menuText = `Wanted Store\n\n◆ ━━━━❪✪❫━━━━ ◆\n❖ Seu número: ${message.from}\n❖ Saldo Atual: R$: ${saldoAtual}\n◆ ━━━━❪✪❫━━━━ ◆\n\nATENDIMENTO ON 24 HRS⏰\nGARANTIMOS LIVE E MELHOR PREÇO✅\nTODAS AS INFO SÃO TESTADAS✅\n\n🤖WANTED STORE A MELHOR STORE DA ATUALIDADE🤖\nQUALIDADE,PREÇO JUSTO E AGILIDADE`;
+    
+        await botBaileys.sendPoll(message.from, menuText, {
+            options: ['ADICIONAR SALDO', 'COMPRAR INFO', 'FALAR COM O SUPORTE', 'SOBRE O BOT'],
+            multiselect: false
+        });
+    
+        awaitingResponse = true;
+    }
+    if (message.body === 'VOLTAR AO MENU') {
+        console.log(message.body);
     
         const saldoAtual = 0.00; // Defina o saldo atual conforme necessário
     
@@ -23,12 +37,15 @@ botBaileys.on('message', async (message) => {
     
         awaitingResponse = true;
     }    
-    if (message.body === 'ADICIONAR PIX') {
-        console.log(message)
-        await botBaileys.sendPoll(message.from, 'Menu Add Pix', {
-            options: ['PIX AUTOMATICO', 'COMPRAR INFO', 'FALAR COM O SUPORTE', 'SOBRE O BOT'],
+    if (message.body === 'ADICIONAR SALDO') {
+        console.log(message.body);
+        const menuText = `MENU DE OPÇÕES DE PIX\n\nEscolha o valor do pix desejado para recarregar sua conta, ou digite um valor personalizado ao escolher a opção "Digite outro valor".`;
+    
+        await botBaileys.sendPoll(message.from, menuText, {
+            options: ['ADICIONAR SALDO', 'COMPRAR INFO', 'FALAR COM O SUPORTE', 'SOBRE O BOT'],
             multiselect: false
         });
+    
         awaitingResponse = true;
     } else {
         const command = message.body.toLowerCase().trim();
