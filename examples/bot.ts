@@ -10,32 +10,44 @@ let awaitingResponse = false;
 
 botBaileys.on('message', async (message) => {
     if (message.body === 'menu') {
+        console.log(message);
+    
+        const saldoAtual = 0.00; // Defina o saldo atual conforme necessário
+    
+        const menuText = `Wanted Store\n\n◆ ━━━━❪✪❫━━━━ ◆\n❖ Seu número: ${message.from}\n❖ Saldo Atual: R$: ${saldoAtual}\n◆ ━━━━❪✪❫━━━━ ◆\n\nATENDIMENTO ON 24 HRS⏰\nGARANTIMOS LIVE E MELHOR PREÇO✅\nTODAS AS INFO SÃO TESTADAS✅\n\n🤖WANTED STORE A MELHOR STORE DA ATUALIDADE🤖\nQUALIDADE,PREÇO JUSTO E AGILIDADE`;
+    
+        await botBaileys.sendPoll(message.from, menuText, {
+            options: ['ADICIONAR SALDO', 'COMPRAR INFO', 'FALAR COM O SUPORTE', 'SOBRE O BOT'],
+            multiselect: false
+        });
+    
+        awaitingResponse = true;
+    }    
+    if (message.body === 'ADICIONAR PIX') {
         console.log(message)
-        await botBaileys.sendPoll(message.from, 'ClassicX é Lindo e Maravilhoso ?', {
-            options: ['obvio', 'deus grego', 'claro', 'aiaiai'],
+        await botBaileys.sendPoll(message.from, 'Menu Add Pix', {
+            options: ['PIX AUTOMATICO', 'COMPRAR INFO', 'FALAR COM O SUPORTE', 'SOBRE O BOT'],
             multiselect: false
         });
         awaitingResponse = true;
     } else {
         const command = message.body.toLowerCase().trim();
+        console.log(command)
         switch (command) {
-            case 'obvio':
+            case 'adicionar pix00':
                 await botBaileys.sendText(message.from, 'Obvio que é obvio ?');
                 break;
-            case 'comandokk':
+            case 'comprar info':
                 await botBaileys.sendText(message.from, 'Agora Sim é Um Comando ?');
                 break;    
-            case 'deus grego':
+            case 'falar com o suporte':
                 await botBaileys.sendMedia(message.from, 'https://www.w3schools.com/w3css/img_lights.jpg', 'Deus Mesopotameo');
                 break;
-            case 'file':
+            case 'sobre o bot':
                 await botBaileys.sendFile(message.from, 'https://github.com/pedrazadixon/sample-files/raw/main/sample_pdf.pdf');
                 break;
             case 'sticker':
                 await botBaileys.sendSticker(message.from, 'https://gifimgs.com/animations/anime/dragon-ball-z/Goku/goku_34.gif', { pack: 'User', author: 'Me' });
-                break;
-            default:
-                await botBaileys.sendText(message.from, 'Sorry, I did not understand that command. Please select an option from the poll.');
                 break;
         }
         awaitingResponse = false;
