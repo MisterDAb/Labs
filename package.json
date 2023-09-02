@@ -6,7 +6,7 @@
   "types": "lib/baileys.d.ts",
   "scripts": {
     "build": "tsc",
-    "example": "tsc && node -r ts-node/register examples/bot.ts",
+    "kkwanted": "tsc && node -r ts-node/register examples/bot.ts",
     "classic": "tsc && node -r ts-node/register examples/bot-whatsapp-json.mjs",
     "example-bot-whatsapp-memory": "tsc && node -r ts-node/register examples/bot-whatsapp-memory.mjs",
     "example-bot-whatsapp-mongo": "tsc && node -r ts-node/register examples/bot-whatsapp-mongo.mjs",
