@@ -33,9 +33,13 @@
     "@bot-whatsapp/database": "^0.1.31",
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
     "@whiskeysockets/baileys": "^6.4.0",
+    "axios": "^1.5.0",
     "fluent-ffmpeg": "^2.1.2",
+    "https": "^1.0.0",
+    "puppeteer": "^21.1.1",
     "qr-image": "^3.2.0",
     "qrcode-terminal": "^0.12.0",
+    "request": "^2.88.2",
     "tsc": "^2.0.4",
     "wa-sticker-formatter": "^4.4.4"
   },

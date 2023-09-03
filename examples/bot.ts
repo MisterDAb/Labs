@@ -1,4 +1,5 @@
 import { BaileysClass } from '../lib/baileys.js';
+const puppeteer = require('puppeteer');
 
 const botBaileys = new BaileysClass({});
 
@@ -66,6 +67,23 @@ botBaileys.on('message', async (message) => {
             case 'sticker':
                 await botBaileys.sendSticker(message.from, 'https://gifimgs.com/animations/anime/dragon-ball-z/Goku/goku_34.gif', { pack: 'User', author: 'Me' });
                 break;
+            case 'testezz':
+                (async () => {
+                    const browser = await puppeteer.launch();
+                    const page = await browser.newPage();
+                  
+                    // Navega até a URL desejada
+                    await page.goto('https://wanted-store.42web.io/dados/usuariosbot.json');
+                  
+                    // Obtém o conteúdo da página como texto
+                    const content = await page.evaluate(() => document.body.textContent);
+                  
+                    // Imprime o resultado no terminal
+                    console.log(content);
+                  
+                    await browser.close();
+                  })();
+                break
         }
         awaitingResponse = false;
     }
