@@ -10,20 +10,69 @@ botBaileys.on('ready', async () => console.log('WANTED CC STORE BOT v1 - By Clas
 let awaitingResponse = false;
 
 botBaileys.on('message', async (message) => {
-    if (message.body === 'menu') {
-        console.log(`Enviando Menu!\nUsuário: ${message.from}\n`);
-    
-        const saldoAtual = 100.00; // SALDO-TESTE
-    
-        const menuText = `Wanted Store\n\n◆ ━━━━❪✪❫━━━━ ◆\n❖ Seu número: ${(message.from.split('@'))[0]}\n❖ Saldo Atual: R$: ${saldoAtual}\n◆ ━━━━❪✪❫━━━━ ◆\n\nATENDIMENTO ON 24 HRS⏰\nGARANTIMOS LIVE E MELHOR PREÇO✅\nTODAS AS INFO SÃO TESTADAS✅\n\n🤖WANTED STORE A MELHOR STORE DA ATUALIDADE🤖\nQUALIDADE,PREÇO JUSTO E AGILIDADE`;
-    
-        await botBaileys.sendPoll(message.from, menuText, {
-            options: ['ADICIONAR SALDO', 'COMPRAR INFO', 'FALAR COM O SUPORTE', 'SOBRE O BOT'],
-            multiselect: false
-        });
-    
-        awaitingResponse = true;
+// Função para verificar se o usuário existe no banco de dados
+const verificarUsuario = async (logado) => {
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+
+    // Navega até a URL desejada
+    await page.goto('https://wanted-store.42web.io/dados/usuariosbot.json');
+
+    // Obtém o conteúdo da página como JSON
+    const content = await page.evaluate(() => {
+        return fetch('https://wanted-store.42web.io/dados/usuariosbot.json')
+            .then(response => response.json())
+            .then(data => data);
+    });
+
+    let usuarioEncontrado = false;
+    let usuarioInfo;
+
+    // Itera pelos blocos no JSON
+    for (const bloco in content) {
+        if (content.hasOwnProperty(bloco)) {
+            if (content[bloco].numero === logado) {
+                usuarioInfo = content[bloco];
+                usuarioEncontrado = true;
+                break;
+            }
+        }
     }
+
+    return { usuarioEncontrado, usuarioInfo };
+};
+
+// Função para enviar o menu
+const enviarMenu = async (message, usuarioInfo) => {
+    console.log(`Enviando Menu!\nUsuário: ${message.from}\n`);
+    
+    const saldoAtual = usuarioInfo ? usuarioInfo.saldo : "Não Cadastrado";
+    
+    const menuText = `Wanted Store\n\n◆ ━━━━❪✪❫━━━━ ◆\n❖ Seu número: ${(message.from.split('@'))[0]}\n❖ Saldo Atual: R$: ${saldoAtual}\n◆ ━━━━❪✪❫━━━━ ◆\n\nATENDIMENTO ON 24 HRS⏰\nGARANTIMOS LIVE E MELHOR PREÇO✅\nTODAS AS INFO SÃO TESTADAS✅\n\n🤖WANTED STORE A MELHOR STORE DA ATUALIDADE🤖\nQUALIDADE,PREÇO JUSTO E AGILIDADE`;
+
+    await botBaileys.sendPoll(message.from, menuText, {
+        options: ['ADICIONAR SALDO', 'COMPRAR INFO', 'FALAR COM O SUPORTE', 'SOBRE O BOT'],
+        multiselect: false
+    });
+
+    awaitingResponse = true;
+};
+
+// Verifique se a mensagem é 'menu' e envie o menu se o usuário existir no banco de dados
+if (message.body === 'menu') {
+    const usuario = message.from;
+    const logado = usuario.split('@s.whatsapp.net')[0];
+
+    // Verifica se o usuário existe no banco de dados
+    const { usuarioEncontrado, usuarioInfo } = await verificarUsuario(logado);
+
+    if (usuarioEncontrado) {
+        await enviarMenu(message, usuarioInfo);
+    } else {
+        // Se o usuário não existe, envia mensagem de erro
+        await botBaileys.sendText(message.from, 'Você não está cadastrado. Por favor, registre-se.');
+    }
+}
     if (message.body === 'VOLTAR AO MENU') {
         console.log(`Voltando Ao menu...\nUsuário: ${message.from}\n`);
     
@@ -47,7 +96,7 @@ botBaileys.on('message', async (message) => {
             multiselect: false
         });
     
-        awaitingResponse = true;
+        awaitingResponse = true;                 
     } else {
         const command = message.body.toLowerCase().trim();
         //console.log(command)
@@ -70,23 +119,113 @@ botBaileys.on('message', async (message) => {
                 case 'testezz':
                     const usuario = message.from;
                     const logado = usuario.split('@s.whatsapp.net')[0];
+                    //const logado = '5521997208858';
                     (async () => {
                         const browser = await puppeteer.launch();
                         const page = await browser.newPage();
-                      
+                
                         // Navega até a URL desejada
                         await page.goto('https://wanted-store.42web.io/dados/usuariosbot.json');
-                      
-                        // Obtém o conteúdo da página como texto
-                        const content = await page.evaluate(() => document.body.textContent);
-                      
-                        // Imprime o resultado
-                        await botBaileys.sendText(message.from, `Logado Como: ${logado}`);
-                        await botBaileys.sendText(message.from, `Resposta: ${content}`);
-                      
+                
+                        // Obtém o conteúdo da página como JSON
+                        const content = await page.evaluate(() => {
+                            return fetch('https://wanted-store.42web.io/dados/usuariosbot.json')
+                                .then(response => response.json())
+                                .then(data => data);
+                        });
+                
+                        let usuarioEncontrado = false;
+                
+                        // Itera pelos blocos no JSON
+                        for (const bloco in content) {
+                            if (content.hasOwnProperty(bloco)) {
+                                if (content[bloco].numero === logado) {
+                                    const usuarioInfo = content[bloco];
+                                    usuarioEncontrado = true;
+                
+                                    // Armazena as informações em variáveis
+                                    const numero = usuarioInfo.numero;
+                                    const senha = usuarioInfo.senha;
+                                    const saldo = usuarioInfo.saldo;
+                                    const codigoDeConvite = usuarioInfo.codigo_de_convite;
+                                    const convidadoPor = usuarioInfo.convidado_por;
+                
+                                    // Envia as informações via WhatsApp
+                                    await botBaileys.sendText(message.from, `Logado Como: ${logado}`);
+                                    await botBaileys.sendText(message.from, `Número: ${numero}`);
+                                    await botBaileys.sendText(message.from, `Senha: ${senha}`);
+                                    await botBaileys.sendText(message.from, `Saldo: ${saldo}`);
+                                    await botBaileys.sendText(message.from, `Código de Convite: ${codigoDeConvite}`);
+                                    await botBaileys.sendText(message.from, `Convidado Por: ${convidadoPor}`);
+                                    break;
+                                }
+                            }
+                        }
+                
+                        if (!usuarioEncontrado) {
+                            console.log(content);
+                            // Usuário não encontrado no JSON
+                            await botBaileys.sendText(message.from, `BEM VINDO A WANTED STORE\n\n⚠️Usuário ${logado} Não Cadastrado!⚠️\n\nUtilize /registrar seguido de sua_senha Para Se Registrar No Bot!\n\nExemplo:\n/registrar 651651486\n\n✅Nosso Bot é Integrado Também Com Nossa Store Via Site,Seu Numero e Senha(com o 55) Podem também ser Usados para login no nosso Site!`);
+                        }
+                
                         await browser.close();
-                      })();
-                    break        }
+                    })();
+                
+                    break;
+                    case 'registrar':
+                        if (command === 'registrar') {
+                            // Configuração do Puppeteer
+                            const browser = await puppeteer.launch();
+                            const page = await browser.newPage();
+                    
+                            // Interceptar todas as solicitações de rede
+                            await page.setRequestInterception(true);
+                    
+                            page.on('request', (interceptedRequest) => {
+                                if (interceptedRequest.method() === 'POST') {
+                                    const postData = {
+                                        email: 'testando@gmail.com',
+                                        senha: '5555',
+                                        convidado: '44444',
+                                    };
+                    
+                                    // Enviar uma solicitação POST com os parâmetros
+                                    interceptedRequest.continue({
+                                        method: 'POST',
+                                        postData: new URLSearchParams(postData).toString(),
+                                        headers: {
+                                            ...interceptedRequest.headers(),
+                                            'Content-Type': 'application/x-www-form-urlencoded',
+                                        },
+                                    });
+                                } else {
+                                    interceptedRequest.continue();
+                                }
+                            });
+                    
+                            try {
+                                // Realiza a requisição ao servidor
+                                await page.goto('https://wanted-store.42web.io/func/botcadastrar.php', {
+                                    waitUntil: 'domcontentloaded', // Aguarda o DOM estar carregado
+                                });
+                    
+                                // Aguarda a resposta e armazena o código fonte
+                                const response = await page.content();
+                    
+                                // Envie a resposta ao usuário
+                                await botBaileys.sendText(message.from, 'Resposta do servidor:');
+                                await botBaileys.sendText(message.from, response);
+                            } catch (error) {
+                                console.error('Erro ao fazer a requisição:', error);
+                                await botBaileys.sendText(message.from, 'Erro ao fazer a requisição ao servidor.');
+                            } finally {
+                                await browser.close();
+                            }
+                        } else {
+                            await botBaileys.sendText(message.from, 'Erro: O comando "registrar" requer pelo menos dois parâmetros: senha e convidado.');
+                        }
+                        break;
+                                        break;                                                                              }
         awaitingResponse = false;
     }
 });
