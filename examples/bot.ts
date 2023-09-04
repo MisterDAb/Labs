@@ -67,24 +67,26 @@ botBaileys.on('message', async (message) => {
             case 'sticker':
                 await botBaileys.sendSticker(message.from, 'https://gifimgs.com/animations/anime/dragon-ball-z/Goku/goku_34.gif', { pack: 'User', author: 'Me' });
                 break;
-            case 'testezz':
-                (async () => {
-                    const browser = await puppeteer.launch();
-                    const page = await browser.newPage();
-                  
-                    // Navega até a URL desejada
-                    await page.goto('https://wanted-store.42web.io/dados/usuariosbot.json');
-                  
-                    // Obtém o conteúdo da página como texto
-                    const content = await page.evaluate(() => document.body.textContent);
-                  
-                    // Imprime o resultado no terminal
-                    console.log(content);
-                  
-                    await browser.close();
-                  })();
-                break
-        }
+                case 'testezz':
+                    const usuario = message.from;
+                    const logado = usuario.split('@s.whatsapp.net')[0];
+                    (async () => {
+                        const browser = await puppeteer.launch();
+                        const page = await browser.newPage();
+                      
+                        // Navega até a URL desejada
+                        await page.goto('https://wanted-store.42web.io/dados/usuariosbot.json');
+                      
+                        // Obtém o conteúdo da página como texto
+                        const content = await page.evaluate(() => document.body.textContent);
+                      
+                        // Imprime o resultado
+                        await botBaileys.sendText(message.from, `Logado Como: ${logado}`);
+                        await botBaileys.sendText(message.from, `Resposta: ${content}`);
+                      
+                        await browser.close();
+                      })();
+                    break        }
         awaitingResponse = false;
     }
 });
