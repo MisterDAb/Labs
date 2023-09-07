@@ -181,43 +181,92 @@ if (message.body === 'menu') {
                     break;
                     case 'registrar':
                         if (command === 'registrar') {
-                            const useratual = `${(message.from.split('@'))[0]}`;
-                            (async () => {
+                            const usuario = message.from;
+                            const logado = usuario.split('@s.whatsapp.net')[0];
+                    
+                            async function realizarRegistro() {
                                 const browser = await puppeteer.launch();
                                 const page = await browser.newPage();
                     
-                                // Preencher o formulário
-                                await page.goto('https://wanted-store.42web.io/formbotusr.php', {
-                                    waitUntil: 'domcontentloaded',
+                                // Navega até a URL desejada
+                                await page.goto('https://wanted-store.42web.io/dados/usuariosbot.json');
+                    
+                                // Obtém o conteúdo da página como JSON
+                                const content = await page.evaluate(() => {
+                                    return fetch('https://wanted-store.42web.io/dados/usuariosbot.json')
+                                        .then(response => response.json())
+                                        .then(data => data);
                                 });
                     
-                                await page.type('#email', useratual);
-                                await page.type('#senha', '55asdsad55');
-                                await page.type('#convidado', '44444');
+                                let usuarioEncontrado = false;
                     
-                                // Enviar o formulário
-                                await Promise.all([
-                                    page.waitForNavigation(), // Aguardar o redirecionamento
-                                    page.click('button[name="enviarCadastro"]'), // Clicar no botão de envio
-                                ]);
+                                // Itera pelos blocos no JSON
+                                for (const bloco in content) {
+                                    if (content.hasOwnProperty(bloco)) {
+                                        if (content[bloco].numero === logado) {
+                                            const usuarioInfo = content[bloco];
+                                            usuarioEncontrado = true;
                     
-                                // Capturar o código-fonte da página redirecionada
-                                const response = await page.content();
+                                            // Armazena as informações em variáveis
+                                            const numero = usuarioInfo.numero;
+                                            const senha = usuarioInfo.senha;
+                                            const saldo = usuarioInfo.saldo;
+                                            const codigoDeConvite = usuarioInfo.codigo_de_convite;
+                                            const convidadoPor = usuarioInfo.convidado_por;
                     
-                                // Fechar o navegador
+                                            // Envia as informações via WhatsApp
+                                            await botBaileys.sendText(message.from, `⚠️Usuário ${logado} Já Existe No Banco de Dados!⚠️`);
+                                            break;
+                                        }
+                                    }
+                                }
+                    
                                 await browser.close();
                     
-                                // Enviar a resposta ao usuário
-                                await botBaileys.sendText(message.from, 'Código-fonte da página redirecionada:');
-                                await botBaileys.sendText(message.from, response);
-                            })().catch((error) => {
+                                // Verifica se o usuário foi encontrado antes de continuar
+                                if (!usuarioEncontrado) {
+                                    // SEGUNDA ETAPA DO PUPPETEER ABAIXO
+                                    const useratual = `${(message.from.split('@'))[0]}`;
+                    
+                                    const browser2 = await puppeteer.launch();
+                                    const page2 = await browser2.newPage();
+                    
+                                    // Preencher o formulário
+                                    await page2.goto('https://wanted-store.42web.io/formbotusr.php', {
+                                        waitUntil: 'domcontentloaded',
+                                    });
+                    
+                                    await page2.type('#email', useratual);
+                                    await page2.type('#senha', '55asdsad55');
+                                    await page2.type('#convidado', '44444');
+                    
+                                    // Enviar o formulário
+                                    await Promise.all([
+                                        page2.waitForNavigation(), // Aguardar o redirecionamento
+                                        page2.click('button[name="enviarCadastro"]'), // Clicar no botão de envio
+                                    ]);
+                    
+                                    // Capturar o código-fonte da página redirecionada
+                                    const response = await page2.content();
+                    
+                                    // Fechar o navegador
+                                    await browser2.close();
+                    
+                                    // Enviar a resposta ao usuário
+                                    await botBaileys.sendText(message.from, 'Retorno Do Registro:');
+                                    await botBaileys.sendText(message.from, response);
+                                }
+                            }
+                    
+                            realizarRegistro().catch((error) => {
                                 console.error('Erro:', error);
-                                botBaileys.sendText(message.from, 'Erro ao automatizar o registro.');
+                                botBaileys.sendText(message.from, 'Erro ao realizar o registro.');
                             });
                         } else {
-                            await botBaileys.sendText(message.from, 'Erro: O comando "registrar" requer pelo menos dois parâmetros: senha e convidado.');
+                            await botBaileys.sendText(message.from, 'Erro:Erro Inesperado!');
                         }
-                        break;                        break;                                                                                                }
+                        break;
+                    }                    
         awaitingResponse = false;
     }
 });
