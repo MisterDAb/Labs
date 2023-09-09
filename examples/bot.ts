@@ -1,3 +1,6 @@
+//BASE CODADA PELO ClassicX-O-BRABO - TODOS OS DIREITOS RESERVADOS!
+//AVISO: ESTA BASE ESTÁ DESCRIPTOGRAFADA MAS AINDA SIM NÃO FOI CRIADA PRA SER EDITAVEL,SÓ EDITE SE SOUBER O QUE ESTÁ FAZENDO!
+//QUALQUER ALTERAÇÃO NESTE ARQUIVO PODE QUEBRAR O BOT!
 import { text } from 'stream/consumers';
 import { BaileysClass } from '../lib/baileys.js';
 import { Console } from 'console';
@@ -317,7 +320,7 @@ if (message.body === 'menu') {
                                             const convidadoPor = usuarioInfo.convidado_por;
                     
                                             // Envia as informações via WhatsApp
-                                            await botBaileys.sendText(message.from, `⚠️Usuário ${logado} Já Existe No Banco de Dados!⚠️\n\nDigite *menu*`);
+                                            await botBaileys.sendText(message.from, `*⚠️Usuário ${logado} Já Existe No Banco de Dados!⚠️*\n\nDigite *menu*`);
                                             break;
                                         }
                                     }
