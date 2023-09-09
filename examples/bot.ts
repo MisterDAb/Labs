@@ -71,6 +71,16 @@ const enviarMenu = async (message, usuarioInfo) => {
     awaitingResponse = true;
 };
 
+if (comandoprinc === 'pix') {
+    const valorkk = valorcomand;
+    if (valorkk === undefined) {
+        await botBaileys.sendText(message.from, 'Pix Não Contém Valor!');
+    } else {
+        const pixtext = `Comando Recebido!\n Comando ${comandoprinc} ${valorkk}\n\nValor do Pix a Ser Adicionado: ${valorkk}`;
+        await botBaileys.sendText(message.from, pixtext);
+    }
+}
+
 // Verifique se a mensagem é 'menu' e envie o menu se o usuário existir no banco de dados
 if (message.body === 'menu') {
     console.log("Menu Acionado!")
