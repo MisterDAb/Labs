@@ -1,5 +1,6 @@
 import { text } from 'stream/consumers';
 import { BaileysClass } from '../lib/baileys.js';
+import { Console } from 'console';
 const puppeteer = require('puppeteer');
 
 const botBaileys = new BaileysClass({});
@@ -113,15 +114,26 @@ if (message.body === 'menu') {
     
         awaitingResponse = true;
     }
-    if (message.body === 'testekkj') {
+    if (message.body === '💳CARTÕES POR NÍVEL') {
         (async () => {
+            const usuario = message.from;
+            const logado = usuario.split('@s.whatsapp.net')[0];
+            const { usuarioEncontrado, usuarioInfo } = await verificarUsuario(logado);
+            const email_do_usuario = usuarioInfo.numero;
+            const senha_do_usuario = usuarioInfo.senha;
+            if (usuarioEncontrado) {
+                console.log("Dados de Usuário Capturados!")
+            } else {
+                // Se o usuário não existe, envia mensagem de erro
+                await botBaileys.sendText(message.from, '❌Você não está cadastrado. Por favor, registre-se\n\nApenas Digite *registrar*');
+            }
             const browser = await puppeteer.launch();
             const page = await browser.newPage();
           
             // Configurar os dados do POST
             const postData = {
-              email: '5521976401215',
-              senha: 'kkkkkkkkk'
+              email: email_do_usuario,
+              senha: senha_do_usuario
             };
           
             // Fazer a solicitação POST
@@ -144,13 +156,27 @@ if (message.body === 'menu') {
           
               return text;
             }, postData);
-          
-            console.log(response);
-            await botBaileys.sendText(message.from, response);
+    
+            if (response.includes('Login Efetuado Com Sucesso! Cookies Salvos!')) {
+              console.log('Login bem-sucedido');
+              // Redirecionar para https://wanted-store.42web.io/loja/listalogins.php
+              await botBaileys.sendText(message.from, response);
+    
+              // Crie um novo PageContext na mesma instância do navegador
+              const page2 = await browser.newPage();
+              await page2.goto('https://wanted-store.42web.io/loja/listalogins.php');
+              const response2 = await page2.content();
+    
+              // Trabalhe com a resposta da segunda página como necessário
+              await botBaileys.sendText(message.from, response2);
+            } else {
+              await botBaileys.sendText(message.from, 'Erro ao fazer login');
+              // Aqui você pode enviar uma mensagem de erro
+            }
             await browser.close();
           })();
           awaitingResponse = true;
-    } else {
+           } else {
         const command = message.body.toLowerCase().trim();
         //console.log(command)
         switch (command) {
