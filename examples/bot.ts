@@ -16,6 +16,10 @@ botBaileys.on('message', async (message) => {
     const parametros = message.body.split(' ');
     const logsender = 'Usuário: ' + useratual;
     const logcomando = 'Comando: ' + parametros;
+    const comandoprinc = parametros[0];
+    const valorcomand = parametros[1];
+    console.log(comandoprinc)
+    console.log(valorcomand)
     console.log('Novo Comando!\n')
     console.log(logsender)
     console.log(logcomando)
