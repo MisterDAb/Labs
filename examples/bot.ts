@@ -160,23 +160,39 @@ if (message.body === 'menu') {
             if (response.includes('Login Efetuado Com Sucesso! Cookies Salvos!')) {
               console.log('Login bem-sucedido');
               // Redirecionar para https://wanted-store.42web.io/loja/listalogins.php
-              await botBaileys.sendText(message.from, response);
+              //await botBaileys.sendText(message.from, response);
     
               // Crie um novo PageContext na mesma instância do navegador
               const page2 = await browser.newPage();
               await page2.goto('https://wanted-store.42web.io/loja/listalogins.php');
               const response2 = await page2.content();
     
-              // Trabalhe com a resposta da segunda página como necessário
-              await botBaileys.sendText(message.from, response2);
+              // Extrair elementos do tipo <option> da resposta da segunda página
+              const options = response2.match(/<option[^>]*>.*?<\/option>/g);
+              
+              if (options) {
+                const pollOptions = options.map((option) => {
+                  // Extrair o texto dentro da tag <option>
+                  const text = option.replace(/<[^>]*>/g, '');
+                  return text;
+                });
+    
+                // Enviar enquete para o usuário
+                await botBaileys.sendPoll(message.from, 'Escolha uma opção:', {
+                  options: pollOptions,
+                  multiselect: false
+                });
+              } else {
+                await botBaileys.sendText(message.from, 'Nenhuma opção encontrada na resposta.');
+              }
             } else {
               await botBaileys.sendText(message.from, 'Erro ao fazer login');
               // Aqui você pode enviar uma mensagem de erro
             }
             await browser.close();
-          })();
-          awaitingResponse = true;
-           } else {
+        })();
+        awaitingResponse = true;
+    } else {
         const command = message.body.toLowerCase().trim();
         //console.log(command)
         switch (command) {
