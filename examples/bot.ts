@@ -1,3 +1,4 @@
+import { text } from 'stream/consumers';
 import { BaileysClass } from '../lib/baileys.js';
 const puppeteer = require('puppeteer');
 
@@ -58,7 +59,7 @@ const enviarMenu = async (message, usuarioInfo) => {
     const menuText = `Wanted Store\n\n◆ ━━━━❪✪❫━━━━ ◆\n❖ Seu número: ${(message.from.split('@'))[0]}\n❖ Saldo Atual: R$: ${saldoAtual}\n◆ ━━━━❪✪❫━━━━ ◆\n\nATENDIMENTO ON 24 HRS⏰\nGARANTIMOS LIVE E MELHOR PREÇO✅\nTODAS AS INFO SÃO TESTADAS✅\n\n🤖WANTED STORE A MELHOR STORE DA ATUALIDADE🤖\nQUALIDADE,PREÇO JUSTO E AGILIDADE`;
 
     await botBaileys.sendPoll(message.from, menuText, {
-        options: ['ADICIONAR SALDO', 'COMPRAR INFO', 'FALAR COM O SUPORTE', 'SOBRE O BOT'],
+        options: ['🤑ADICIONAR SALDO🤑', '💳COMPRAR INFO💳', '📞FALAR COM O SUPORTE📞', '👨SOBRE O BOT👨'],
         multiselect: false
     });
 
@@ -67,6 +68,7 @@ const enviarMenu = async (message, usuarioInfo) => {
 
 // Verifique se a mensagem é 'menu' e envie o menu se o usuário existir no banco de dados
 if (message.body === 'menu') {
+    console.log("Menu Acionado!")
     const usuario = message.from;
     const logado = usuario.split('@s.whatsapp.net')[0];
 
@@ -77,33 +79,77 @@ if (message.body === 'menu') {
         await enviarMenu(message, usuarioInfo);
     } else {
         // Se o usuário não existe, envia mensagem de erro
-        await botBaileys.sendText(message.from, 'Você não está cadastrado. Por favor, registre-se.');
+        await botBaileys.sendText(message.from, '❌Você não está cadastrado. Por favor, registre-se\n\nApenas Digite *registrar*');
     }
 }
-    if (message.body === 'VOLTAR AO MENU') {
-        console.log(`Voltando Ao menu...\nUsuário: ${message.from}\n`);
+    if (message.body === '❌VOLTAR AO MENU❌') {
+        const usuario = message.from;
+        const logado = usuario.split('@s.whatsapp.net')[0];
     
-        const saldoAtual = 0.00; // Defina o saldo atual conforme necessário
+        // Verifica se o usuário existe no banco de dados
+        const { usuarioEncontrado, usuarioInfo } = await verificarUsuario(logado);
     
-        const menuText = `Wanted Store\n\n◆ ━━━━❪✪❫━━━━ ◆\n❖ Seu número: ${message.from}\n❖ Saldo Atual: R$: ${saldoAtual}\n◆ ━━━━❪✪❫━━━━ ◆\n\nATENDIMENTO ON 24 HRS⏰\nGARANTIMOS LIVE E MELHOR PREÇO✅\nTODAS AS INFO SÃO TESTADAS✅\n\n🤖WANTED STORE A MELHOR STORE DA ATUALIDADE🤖\nQUALIDADE,PREÇO JUSTO E AGILIDADE`;
-    
-        await botBaileys.sendPoll(message.from, menuText, {
-            options: ['ADICIONAR SALDO', 'COMPRAR INFO', 'FALAR COM O SUPORTE', 'SOBRE O BOT'],
-            multiselect: false
-        });
-    
-        awaitingResponse = true;
-    }    
-    if (message.body === 'ADICIONAR SALDO') {
+        if (usuarioEncontrado) {
+            await enviarMenu(message, usuarioInfo);
+        } else {
+            // Se o usuário não existe, envia mensagem de erro
+            await botBaileys.sendText(message.from, '❌Você não está cadastrado. Por favor, registre-se\n\nApenas Digite *registrar*');
+        }
+    }   
+    if (message.body === '🤑ADICIONAR SALDO🤑') {
         console.log(`Indo ao menu de Adicionar Saldo...\nUsuário: ${message.from}\n`);
-        const menuText = `MENU DE OPÇÕES DE PIX\n\nEscolha o valor do pix desejado para recarregar sua conta, ou digite um valor personalizado ao escolher a opção "Digite outro valor".`;
+        const menuText = `💰COMO ADICIONAR SALDO VIA PIX💰\n\nUtilize "pix" Seguido do Valor Desejado no Formato 0.00\n\nExemplo:\n\n*pix 15*\n\n*pix 22.70* `;
+        await botBaileys.sendText(message.from, menuText);    
+        awaitingResponse = true;
+    }
+    if (message.body === '💳COMPRAR INFO💳') {
+        console.log(`Indo ao menu de Escolher Info...\nUsuário: ${message.from}\n`);
+        const menuText = `💳MENU DE DE CARTÕES💳\n\nTODAS AS INFOS ACOMPANHAM NOME E CPF!\n\nESCOLHA ABAIXO O TIPO DESEJADO`;
     
         await botBaileys.sendPoll(message.from, menuText, {
-            options: ['ADICIONAR SALDO', 'COMPRAR INFO', 'FALAR COM O SUPORTE', 'SOBRE O BOT'],
+            options: ['💳CARTÕES POR NÍVEL', '💳CARTÕES POR BANCO', '💳CARTÕES POR BIN', '💳PACOTES MIX', '❌VOLTAR AO MENU❌'],
             multiselect: false
         });
     
         awaitingResponse = true;
+    }
+    if (message.body === 'testekkj') {
+        (async () => {
+            const browser = await puppeteer.launch();
+            const page = await browser.newPage();
+          
+            // Configurar os dados do POST
+            const postData = {
+              email: '5521976401215',
+              senha: 'kkkkkkkkk'
+            };
+          
+            // Fazer a solicitação POST
+            await page.goto('https://wanted-store.42web.io/func/logarbotapi.php', {
+              waitUntil: 'networkidle0',
+            });
+          
+            const response = await page.evaluate(async (postData) => {
+              const formData = new FormData();
+              formData.append('email', postData.email);
+              formData.append('senha', postData.senha);
+          
+              const fetchOptions = {
+                method: 'POST',
+                body: formData,
+              };
+          
+              const response = await fetch('https://wanted-store.42web.io/func/logarbotapi.php', fetchOptions);
+              const text = await response.text();
+          
+              return text;
+            }, postData);
+          
+            console.log(response);
+            await botBaileys.sendText(message.from, response);
+            await browser.close();
+          })();
+          awaitingResponse = true;
     } else {
         const command = message.body.toLowerCase().trim();
         //console.log(command)
@@ -172,7 +218,7 @@ if (message.body === 'menu') {
                         if (!usuarioEncontrado) {
                             console.log(content);
                             // Usuário não encontrado no JSON
-                            await botBaileys.sendText(message.from, `BEM VINDO A WANTED STORE\n\n⚠️Usuário ${logado} Não Cadastrado!⚠️\n\nUtilize /registrar seguido de sua_senha Para Se Registrar No Bot!\n\nExemplo:\n/registrar 651651486\n\n✅Nosso Bot é Integrado Também Com Nossa Store Via Site,Seu Numero e Senha(com o 55) Podem também ser Usados para login no nosso Site!`);
+                            await botBaileys.sendText(message.from, `BEM VINDO A WANTED STORE\n\n⚠️Usuário ${logado} Não Cadastrado!⚠️\n\nUtilize registrar Para Se Registrar No Bot!\n\nExemplo:\n\n*registrar*\n\n✅Nosso Bot é Integrado Também Com Nossa Store Via Site,Seu Numero(com o 55) e Senha Gerada Após o Registro Podem também ser Usados para login no nosso Site!`);
                         }
                 
                         await browser.close();
@@ -215,7 +261,7 @@ if (message.body === 'menu') {
                                             const convidadoPor = usuarioInfo.convidado_por;
                     
                                             // Envia as informações via WhatsApp
-                                            await botBaileys.sendText(message.from, `⚠️Usuário ${logado} Já Existe No Banco de Dados!⚠️`);
+                                            await botBaileys.sendText(message.from, `⚠️Usuário ${logado} Já Existe No Banco de Dados!⚠️\n\nDigite *menu*`);
                                             break;
                                         }
                                     }
