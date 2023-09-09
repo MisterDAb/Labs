@@ -74,7 +74,7 @@ const enviarMenu = async (message, usuarioInfo) => {
 if (comandoprinc === 'pix') {
     const valorkk = valorcomand;
     if (valorkk === undefined) {
-        await botBaileys.sendText(message.from, 'Pix Não Contém Valor!');
+        await botBaileys.sendText(message.from, '*⚠️INSIRA O VALOR DO PIX!⚠️*\n\nExemplo: *pix 10*');
     } else {
         const pixtext = `Comando Recebido!\n Comando ${comandoprinc} ${valorkk}\n\nValor do Pix a Ser Adicionado: ${valorkk}`;
         await botBaileys.sendText(message.from, pixtext);
