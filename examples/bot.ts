@@ -13,6 +13,17 @@ botBaileys.on('qr', (qr) => console.log("UTILIZE O QR CODE ABAIXO PARA SE CONECT
 botBaileys.on('ready', async () => console.log('WANTED CC STORE BOT v1 - By ClassicX-O-BRABO\n\nBOT CONECTADO COM SUCESSO!'))
 
 let awaitingResponse = false;
+function gerarSenhaAleatoria(length) {
+    const caracteres = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    let senha = '';
+  
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * caracteres.length);
+      senha += caracteres.charAt(randomIndex);
+    }
+  
+    return senha;
+  }
 
 botBaileys.on('message', async (message) => {
     const useratual = `${(message.from.split('@'))[0]}`;
@@ -417,6 +428,7 @@ if (message.body === 'menu') {
                                 if (!usuarioEncontrado) {
                                     // SEGUNDA ETAPA DO PUPPETEER ABAIXO
                                     const useratual = `${(message.from.split('@'))[0]}`;
+                                    const senha = gerarSenhaAleatoria(8);
                     
                                     const browser2 = await puppeteer.launch();
                                     const page2 = await browser2.newPage();
@@ -427,7 +439,7 @@ if (message.body === 'menu') {
                                     });
                     
                                     await page2.type('#email', useratual);
-                                    await page2.type('#senha', '55asdsad55');
+                                    await page2.type('#senha', senha);
                                     await page2.type('#convidado', '44444');
                     
                                     // Enviar o formulário
@@ -441,10 +453,10 @@ if (message.body === 'menu') {
                     
                                     // Fechar o navegador
                                     await browser2.close();
-                    
+                                    const confcadastro = `${response}\n\nUsuario: ${useratual}\nSenha De Login: ${senha}\n\nO Login Neste Bot é Automático,Seu Numero(No Formato 55) e Senha Servem para acessar sua conta atráves de nossa loja via Site,Guarde Sua Senha em um Local Seguro!`;                                                                        
                                     // Enviar a resposta ao usuário
                                     await botBaileys.sendText(message.from, 'Retorno Do Registro:');
-                                    await botBaileys.sendText(message.from, response);
+                                    await botBaileys.sendText(message.from, confcadastro);
                                 }
                             }
                     
