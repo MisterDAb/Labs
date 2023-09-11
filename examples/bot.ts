@@ -86,15 +86,108 @@ const enviarMenu = async (message, usuarioInfo) => {
 };
 
 if (comandoprinc === 'pix') {
-    const valorkk = valorcomand;
-    if (valorkk === undefined) {
-        await botBaileys.sendText(message.from, '*⚠️INSIRA O VALOR DO PIX!⚠️*\n\nExemplo: *pix 10*');
-    } else {
-        const pixtext = `Comando Recebido!\n Comando ${comandoprinc} ${valorkk}\n\nValor do Pix a Ser Adicionado: ${valorkk}`;
-        await botBaileys.sendText(message.from, pixtext);
-    }
-}
+  const valorkk = valorcomand;
+  if (valorkk === undefined) {
+    await botBaileys.sendText(message.from, '*⚠️ INSIRA O VALOR DO PIX! ⚠️*\n\nExemplo: *pix 10*');
+  } else {
+    (async () => {
+      const usuario = message.from;
+      const logado = usuario.split('@s.whatsapp.net')[0];
+      const { usuarioEncontrado, usuarioInfo } = await verificarUsuario(logado);
+      const email_do_usuario = usuarioInfo.numero;
+      const senha_do_usuario = usuarioInfo.senha;
 
+      if (usuarioEncontrado) {
+        console.log("Dados de Usuário Capturados!");
+
+        const browser = await puppeteer.launch();
+        const page = await browser.newPage();
+
+        // Configurar os dados do POST para fazer login
+        const postData = {
+          email: email_do_usuario,
+          senha: senha_do_usuario
+        };
+
+        // Fazer a solicitação POST para fazer login
+        await page.goto('https://wanted-store.42web.io/func/logarbotapi.php', {
+          waitUntil: 'networkidle0',
+        });
+
+        const response = await page.evaluate(async (postData) => {
+          const formData = new FormData();
+          formData.append('email', postData.email);
+          formData.append('senha', postData.senha);
+
+          const fetchOptions = {
+            method: 'POST',
+            body: formData,
+          };
+
+          const response = await fetch('https://wanted-store.42web.io/func/logarbotapi.php', fetchOptions);
+          const text = await response.text();
+
+          return text;
+        }, postData);
+
+        if (response.includes('Login Efetuado Com Sucesso! Cookies Salvos!')) {
+          console.log('Login bem-sucedido');
+
+          // Configurar os dados do POST para gerar o Pix
+          const postData2 = {
+            valor: valorkk
+          };
+
+          // Fazer a solicitação POST para gerar o Pix
+          await page.goto('https://wanted-store.42web.io/func/pixgen.php', {
+            waitUntil: 'networkidle0',
+          });
+
+          const response2 = await page.evaluate(async (postData2) => {
+            const formData2 = new FormData();
+            formData2.append('valor', postData2.valor);
+
+            const fetchOptions2 = {
+              method: 'POST',
+              body: formData2,
+            };
+
+            const response2 = await fetch('https://wanted-store.42web.io/func/pixgen.php', fetchOptions2);
+            const text2 = await response2.text();
+
+            return text2;
+          }, postData2);
+
+          // Extrair dados relevantes da resposta da API
+          const qrCode = response2.match(/<span id="qr-code".*?>(.*?)<\/span>/);
+          const idPagamento = response2.match(/<span id="codigo-pagamento".*?>(.*?)<\/span>/);
+          const valorPagamento = response2.match(/<h4 style="color: white;">Valor do Pagamento: (.*?)<\/h4>/);
+          const pixGerado = response2.includes('<h1>PAGAMENTO GERADO COM SUCESSO!</h1><br>');
+
+          if (pixGerado) {
+            const dadospixkk = `*PIX GERADO COM SUCESSO!*\n\n*Valor*: ${valorPagamento ? valorPagamento[1] : 'N/A'}\nUtilize o Pix Copia e Cola Abaixo ou o QR Code Acima para pagar o pix,Assim que o pix for pago envie *pix pago* para creditar o seu saldo,todo processo é 100% Automatico`;
+
+            await botBaileys.sendText(message.from, dadospixkk);
+          } else {
+            await botBaileys.sendText(message.from, 'Erro ao Gerar o Pix');
+          }
+
+          if (qrCode && qrCode[1]) {
+            await botBaileys.sendText(message.from, qrCode[1]);
+          } else {
+            await botBaileys.sendText(message.from, 'Erro ao Gerar o Pix Copia e Cola!');
+          }
+        } else {
+          await botBaileys.sendText(message.from, 'Erro ao fazer login.');
+        }
+        await browser.close();
+      } else {
+        // Se o usuário não existe, envia mensagem de erro
+        await botBaileys.sendText(message.from, '❌ Você não está cadastrado. Por favor, registre-se\n\nApenas Digite *registrar*');
+      }
+    })();
+  }
+}
 // Verifique se a mensagem é 'menu' e envie o menu se o usuário existir no banco de dados
 if (message.body === 'menu') {
     console.log("Menu Acionado!")
