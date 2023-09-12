@@ -165,7 +165,7 @@ if (comandoprinc === 'pix') {
           const pixGerado = response2.includes('<h1>PAGAMENTO GERADO COM SUCESSO!</h1><br>');
 
           if (pixGerado) {
-            const dadospixkk = `*PIX GERADO COM SUCESSO!*\n\n*Valor*: ${valorPagamento ? valorPagamento[1] : 'N/A'}\nUtilize o Pix Copia e Cola Abaixo ou o QR Code Acima para pagar o pix,Assim que o pix for pago envie *pix pago* para creditar o seu saldo,todo processo é 100% Automatico`;
+            const dadospixkk = `*PIX GERADO COM SUCESSO!*\n\n*Valor*: ${valorPagamento ? valorPagamento[1] : 'N/A'}\n\nUtilize o Pix Copia e Cola Abaixo para pagar o pix,Assim que o pix for pago envie *paguei o pix* para creditar o seu saldo,todo processo é 100% Automatico`;
 
             await botBaileys.sendText(message.from, dadospixkk);
           } else {
